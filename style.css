@@ -1,0 +1,160 @@
+/* ==== Reset ==== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Poppins", sans-serif; color: #fff; overflow-x: hidden; }
+
+/* ==== Background Animation ==== */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, #1e1e2f, #000000);
+  overflow: hidden;
+}
+.circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,255,200,0.6), transparent 70%);
+  border-radius: 50%;
+  animation: float 15s infinite ease-in-out alternate;
+}
+.circle:nth-child(1) { top: 10%; left: 20%; animation-duration: 18s; }
+.circle:nth-child(2) { bottom: 15%; right: 25%; animation-duration: 22s; }
+.circle:nth-child(3) { top: 40%; right: 10%; animation-duration: 25s; }
+
+@keyframes float {
+  from { transform: translateY(0px) scale(1); }
+  to { transform: translateY(-60px) scale(1.2); }
+}
+
+/* ==== App Container ==== */
+.app-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 40px auto;
+  width: 95%;
+  max-width: 750px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg,#00f5ff,#ff00cc,#ffaa00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+/* Inputs */
+input, select, button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+input:focus, select:focus {
+  outline: none;
+  border: 1px solid #00f5ff;
+  box-shadow: 0 0 8px #00f5ff;
+}
+option { background: #fff; color: #000; }
+
+/* Task Input Section */
+.task-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.task-input button {
+  background: linear-gradient(135deg, #00f5ff, #0077ff);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.task-input button:hover { transform: scale(1.05); }
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.filters button {
+  background: linear-gradient(135deg, #ff3355, #ff7733);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.filters button:hover { transform: scale(1.05); }
+
+/* Task List */
+.task-list { list-style: none; padding: 0; }
+.task-list li {
+  background: rgba(255,255,255,0.15);
+  margin: 12px 0;
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: 0.3s;
+}
+.task-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(0,255,255,0.3);
+}
+.task-title.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+/* Task Info */
+.task-info { flex: 1 1 auto; min-width: 180px; }
+
+/* Task Actions */
+.task-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.task-actions button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.task-actions .complete { background: #00cc88; color: white; }
+.task-actions .edit { background: #ffaa00; color: white; }
+.task-actions .delete { background: #ff3355; color: white; }
+.task-actions button:hover { opacity: 0.85; }
+
+/* No tasks */
+.no-tasks {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media(max-width: 600px){
+  .task-input, .filters { flex-direction: column; }
+  .task-actions { width: 100%; justify-content: flex-end; }
+}
